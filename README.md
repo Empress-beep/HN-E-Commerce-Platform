@@ -1,41 +1,80 @@
-# HN-E-Commerce-Platform
-<<<<<<< HEAD
-获取电商平台招标数据，解决瑞数cookie防护问题
-=======
+
+
+# 电商平台招标数据采集工具
 
 #### 介绍
-获取电商平台招标数据，解决瑞数cookie防护
 
-#### 软件架构
-软件架构说明
+本项目主要用于获取电商平台招标数据，核心功能是解决瑞数（Ruishi）网站的Cookie防护问题。通过模拟浏览器环境获取Cookie，实现对招标数据的自动化采集。
 
+#### 功能特性
+
+- **瑞数Cookie解密**：解决瑞数网站反爬虫的Cookie防护机制
+- **自动化数据采集**：自动获取招标公告数据
+- **数据持久化**：支持将采集的数据保存为CSV格式
+- **请求重试机制**：支持失败自动重试，提高采集成功率
+- **代理IP支持**：支持配置代理IP进行请求
+
+#### 项目结构
+
+```
+HN-E-Commerce-Platform/
+├── browwer.js          # 浏览器环境模拟与Cookie获取
+├── main.py             # 主程序入口
+├── data_cleaning.py    # 数据清洗模块
+└── README.md           # 项目说明文档
+```
+
+#### 环境要求
+
+- Python 3.x
+- Node.js（用于执行 browwer.js）
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. 克隆项目到本地：
+   ```bash
+   git clone https://gitee.com/liu-changkai/hn-e-commerce-platform.git
+   ```
+
+2. 安装Python依赖：
+   ```bash
+   pip install requests
+   ```
+
+3. 确保已安装Node.js环境
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. **配置参数**：在 `main.py` 中修改 `index_url` 和 `data_url` 为目标电商平台URL
+
+2. **运行程序**：
+   ```bash
+   python main.py
+   ```
+
+3. **数据输出**：采集的数据将保存为 `招标公告.csv` 文件
+
+#### 模块说明
+
+- **browwer.js**：负责模拟浏览器环境，获取瑞数Cookie
+  - `get_enviroment(proxy_array)`：初始化浏览器环境，支持代理
+  - `get_cookie()`：获取防护Cookie
+
+- **main.py**：核心采集逻辑
+  - `HN` 类：主采集器
+  - `get_data()`：获取指定页数据，支持重试
+  - `parse_data()`：解析数据
+  - `save_data()`：保存数据到CSV
+
+- **data_cleaning.py**：数据清洗处理
 
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1. Fork 本仓库
+2. 新建 Feat_xxx 分支
+3. 提交代码
+4. 新建 Pull Request
 
+#### 许可证
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
->>>>>>> e7a66a962c1f2e485c597c255c421bcc69d00c57
+本项目仅供学习交流使用，请勿用于商业目的。采集数据时请遵守目标网站的使用条款和 robots.txt 规定。
