@@ -39,20 +39,23 @@ HN-E-Commerce-Platform/
 2. 安装Python依赖：
    ```bash
    pip install requests
+   pip install lxml
+   pip install execjs
    ```
 
 3. 确保已安装Node.js环境
 
 #### 使用说明
 
-1. **配置参数**：在 `main.py` 中修改 `index_url` 和 `data_url` 为目标电商平台URL
+1. **配置参数**：在 `main.py` 中修改 `index_url` 和 `data_url` 为目标电商平台首页URL和数据URL。
+2.推荐先执行"验证函数",查看是否已经解决瑞数，获取到真正的cookie。在执行数据获取函数。
 
-2. **运行程序**：
+3. **运行程序**：
    ```bash
    python main.py
    ```
 
-3. **数据输出**：采集的数据将保存为 `招标公告.csv` 文件
+4. **数据输出**：采集的数据将保存为 `招标公告.csv` 文件
 
 #### 模块说明
 
