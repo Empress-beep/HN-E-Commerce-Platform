@@ -33,7 +33,7 @@ HN-E-Commerce-Platform/
 
 1. 克隆项目到本地：
    ```bash
-   git clone https://gitee.com/liu-changkai/hn-e-commerce-platform.git
+   git clone https://github.com/Empress-beep/HN-E-Commerce-Platform.git
    ```
 
 2. 安装Python依赖：
@@ -57,7 +57,6 @@ HN-E-Commerce-Platform/
 #### 模块说明
 
 - **browwer.js**：负责模拟浏览器环境，获取瑞数Cookie
-  - `get_enviroment(proxy_array)`：初始化浏览器环境，支持代理
   - `get_cookie()`：获取防护Cookie
 
 - **main.py**：核心采集逻辑
@@ -67,13 +66,6 @@ HN-E-Commerce-Platform/
   - `save_data()`：保存数据到CSV
 
 - **data_cleaning.py**：数据清洗处理
-
-#### 参与贡献
-
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
 
 #### 许可证
 
