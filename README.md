@@ -69,6 +69,10 @@ HN-E-Commerce-Platform/
   - `save_data()`：保存数据到CSV
 
 - **data_cleaning.py**：数据清洗处理
+- ![Snipaste_2026-03-06_10-10-18](https://github.com/user-attachments/assets/db64cf60-1ed1-4e3f-a7e9-aea377785fa1)
+- ![Snipaste_2026-03-06_10-13-00](https://github.com/user-attachments/assets/1908a44f-70de-45b4-81a7-849bf8779e6a)
+
+
 
 #### 许可证
 
