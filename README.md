@@ -39,13 +39,15 @@ HN-E-Commerce-Platform/
 2. 安装Python依赖：
    ```bash
    pip install requests
+   pip install lxml
+   pip install execjs
    ```
 
 3. 确保已安装Node.js环境
 
 #### 使用说明
 
-1. **配置参数**：在 `main.py` 中修改 `index_url` 和 `data_url` 为目标电商平台URL
+1. **配置参数**：在 `main.py` 中修改 `index_url` 、`data_url` 和 `detail_url` 为首页地址、数据地址和详情页地址
 
 2. **运行程序**：
    ```bash
@@ -57,13 +59,13 @@ HN-E-Commerce-Platform/
 #### 模块说明
 
 - **browwer.js**：负责模拟浏览器环境，获取瑞数Cookie
-  - `get_enviroment(proxy_array)`：初始化浏览器环境，支持代理
   - `get_cookie()`：获取防护Cookie
 
 - **main.py**：核心采集逻辑
   - `HN` 类：主采集器
   - `get_data()`：获取指定页数据，支持重试
   - `parse_data()`：解析数据
+  - `detail_request()`：详情页获取
   - `save_data()`：保存数据到CSV
 
 - **data_cleaning.py**：数据清洗处理

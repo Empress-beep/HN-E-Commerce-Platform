@@ -8,6 +8,8 @@
   验证函数2：
     第二次请求首页，返回状态码200，表示成功
     后续获取数据即可
+  详情页数据获取，需要找到真正的API,如果是首页地址拼接id，是不可能请求成功的。
+  找到之后需要进入ajax发送异步请求的位置，查看真实地址和参数
 """
 
 import time
@@ -27,11 +29,12 @@ import os
 
 class HN:
   # 初始化函数
-  def __init__(self, index_url, data_url, file_csv='招标公告.csv'):
+  def __init__(self, index_url, data_url,detail_url, file_csv='招标公告.csv'):
     self.csv_file = file_csv
     self._init_csv()
     self.url = index_url
     self.data_url = data_url
+    self.detail_url = detail_url
     self.header = {
       "Accept-Language": "zh-CN,zh;q=0.9",
       "accept": "application/json, text/plain, */*",
@@ -151,6 +154,7 @@ class HN:
       response = requests.post(url=self.data_url, headers=header, json=data, cookies=self.cookies, verify=False)
       # 判断cookie是否还有用
       if response.status_code == 200:
+        response.encoding = 'utf-8'
         return response.json()
       else:
         print('%s页数据没有获取'%page)
@@ -187,6 +191,11 @@ class HN:
       # 平台
       platform = info['creator']
       
+      # 详情页请求
+      res = self.detail_request(id)
+      
+      # 详情页解析
+      
       # 调用保存函数
       self.save_data([id,title,refer_number,createtime,activetime,platform])
 
@@ -198,7 +207,18 @@ class HN:
       witer = csv.writer(f, quoting=csv.QUOTE_MINIMAL)
       witer.writerow(row_data)
   
-  
+  # 详情页请求
+  def detail_request(self, id):
+    params = {
+      'announcementId': id
+    }
+    try:
+      response = requests.get(url=self.detail_url,headers=self.header,params=params,cookies=self.cookies,verify=False)
+      response.encoding = 'utf-8'
+      return response.json()
+    except Exception as e:
+      print('详情页数据获取失败', e)
+
   # 主函数
   def main(self):
     self.first_request()
@@ -206,7 +226,7 @@ class HN:
     # 200表示cookie逆向成功，可以后续数据获取
     if code == 200:
       # 循环获取
-      for page in range(0,31190,10):
+      for page in range(0,10,10):
         # 调用数据获取函数
         data = self.get_data(page=page)
         self.perse_data(data=data)
@@ -219,5 +239,6 @@ if __name__ == '__main__':
   index_url = 'https://ec.chng.com.cn/channel/home/#/purchase?top=0'
   # 招标数据地址
   data_url = 'https://ec.chng.com.cn/scm-uiaoauth-web/s/business/uiaouth/queryAnnouncementByTitle'
-  execute = HN(index_url=index_url, data_url=data_url)
+  detail_url = 'https://ec.chng.com.cn/scm-uiaoauth-web/s/business/uiaouth/announcementDetail'
+  execute = HN(index_url=index_url, data_url=data_url, detail_url=detail_url)
   execute.main()
