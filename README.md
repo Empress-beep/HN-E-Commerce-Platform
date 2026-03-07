@@ -33,7 +33,7 @@ HN-E-Commerce-Platform/
 
 1. 克隆项目到本地：
    ```bash
-   git clone https://gitee.com/liu-changkai/hn-e-commerce-platform.git
+   git clone https://github.com/Empress-beep/HN-E-Commerce-Platform.git
    ```
 
 2. 安装Python依赖：
@@ -49,12 +49,12 @@ HN-E-Commerce-Platform/
 
 1. **配置参数**：在 `main.py` 中修改 `index_url` 、`data_url` 和 `detail_url` 为首页地址、数据地址和详情页地址
 
-2. **运行程序**：
+3. **运行程序**：
    ```bash
    python main.py
    ```
 
-3. **数据输出**：采集的数据将保存为 `招标公告.csv` 文件
+4. **数据输出**：采集的数据将保存为 `招标公告.csv` 文件
 
 #### 模块说明
 
@@ -69,13 +69,10 @@ HN-E-Commerce-Platform/
   - `save_data()`：保存数据到CSV
 
 - **data_cleaning.py**：数据清洗处理
+- ![Snipaste_2026-03-06_10-10-18](https://github.com/user-attachments/assets/db64cf60-1ed1-4e3f-a7e9-aea377785fa1)
+- ![Snipaste_2026-03-06_10-13-00](https://github.com/user-attachments/assets/1908a44f-70de-45b4-81a7-849bf8779e6a)
 
-#### 参与贡献
 
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
 
 #### 许可证
 
